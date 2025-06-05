@@ -1,48 +1,18 @@
-/* Custom Styles */
-
 body {
-  background-color: #111;
-  color: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
 }
 
-.navbar {
-  background-color: #111;
+.banner {
+  max-height: 400px;
+  overflow: hidden;
 }
 
-.hero-image {
+.banner img {
   width: 100%;
-  height: auto;
   object-fit: cover;
 }
 
-.form-section {
-  padding: 2rem 0;
-  background-color: #1a1a1a;
-  color: #fff;
-}
-
-.form-section h2 {
-  color: #1DB954;
-}
-
-.table-section {
-  padding: 2rem 0;
-  background-color: #1a1a1a;
-}
-
-.table-section h2 {
-  color: #1DB954;
-}
-
-footer {
-  background-color: #111;
-  color: #bbb;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-}
-
-footer a {
-  color: #1DB954;
-  text-decoration: none;
+.section {
+  padding: 3rem 0;
 }

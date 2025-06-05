@@ -1,28 +1,45 @@
-// Form submission handler
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('registration-form');
+// Validate email format
+function validateEmail(email) {
+  const pattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+  return pattern.test(email);
+}
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+// Validate password requirements
+function validatePassword(password) {
+  return password.length >= 6;
+}
 
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const agree = document.getElementById('agree').checked;
+// Collect form data into an object
+function collectFormData() {
+  return {
+    firstName: document.getElementById("firstName").value.trim(),
+    lastName: document.getElementById("lastName").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    password: document.getElementById("password").value.trim(),
+    agreedToTerms: document.getElementById("termsCheck").checked
+  };
+}
 
-    if (firstName && lastName && email && password && agree) {
-      // Simulate adding to a table
-      const table = document.querySelector('table tbody');
-      const row = table.insertRow();
-      row.insertCell(0).textContent = firstName;
-      row.insertCell(1).textContent = lastName;
-      row.insertCell(2).textContent = email;
+// Main handler for form submission
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const formData = collectFormData();
 
-      // Reset form
-      form.reset();
-    } else {
-      alert('Please complete all required fields and agree to the terms.');
-    }
-  });
-});
+  if (!validateEmail(formData.email)) {
+    alert("Invalid email format.");
+    return;
+  }
+
+  if (!validatePassword(formData.password)) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  if (!formData.agreedToTerms) {
+    alert("You must agree to the terms.");
+    return;
+  }
+
+  console.log("Form submitted successfully:", formData);
+  alert("Form submitted successfully!");
+}
